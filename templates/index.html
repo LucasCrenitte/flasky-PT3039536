@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="container">
-    <div class="page-header">
-        <h1>Dados da última atualização:</h1>
+<h1>Hello, {{ name or 'Stranger' }}!</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label }}
+        {{ form.name(class="form-control", style="width:300px") }}
     </div>
-    <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
-    <p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
-</div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
 {% endblock %}
